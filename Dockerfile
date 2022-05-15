@@ -14,6 +14,7 @@ CMD ["npm", "run", "build"]
 
 
 # Run Stage
+# 포트 매핑 해줘야함 (nginx는 기본 포트 80)
 FROM nginx
-
+EXPOSE 80
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
