@@ -1,0 +1,25 @@
+# 관리자 권한 갖기
+sudo: required
+
+# 언어(플랫폼)을 선택
+language: generic
+
+# 도커 환경 구성
+services:
+  - docker
+
+# 스크립트를 실행할 수 있는 환경을 구성
+# script을 실행하기 전에 해야될 것임. script 실행하려면 도커 이미지를 생성해야함!
+before_install:
+  - echo "start Creating an image with dockerfile"
+  - docker build -t bakumando/docker-react-app -f Dockerfile.dev .
+
+# 실행할 스크립트 (테스트 실행)
+# travis ci에서 `-e CI=true` 이 부분이 없으면 에러가 넣어서 항상 넣어줘야 함.
+# `-- --coverage` 는 테스트한 걸 더 상세하게 보기위한 것
+script:
+  - docker run -e CI=true bakumando/docker-react-app npm run test -- --coverage
+
+# 테스트 성공 후 할일
+after_sucess:
+  - echo "Test Success"
