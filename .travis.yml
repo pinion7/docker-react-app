@@ -25,7 +25,7 @@ script:
 # after_sucess:
 #   - echo "Test Success"
 
-# 배포환경 설정
+# 배포환경 설정 (자세한 건 pdf 자료 참고)
 deploy:
   provider: elasticbeanstalk
   region: "ap-northeast-2"
