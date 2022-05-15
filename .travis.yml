@@ -8,8 +8,8 @@ language: generic
 services:
   - docker
 
-# 스크립트를 실행할 수 있는 환경을 구성
-# script을 실행하기 전에 해야될 것임. script 실행하려면 도커 이미지를 생성해야함!
+# 스크립트를 실행할 수 있는 환경을 구성.
+# script을 실행하기 전에 해야될 것임. (script 실행하려면 도커 이미지를 생성해야함!)
 before_install:
   - echo "start Creating an image with dockerfile"
   - docker build -t bakumando/docker-react-app -f Dockerfile.dev .
