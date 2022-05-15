@@ -21,5 +21,19 @@ script:
   - docker run -e CI=true bakumando/docker-react-app npm run test -- --coverage
 
 # 테스트 성공 후 할일
-after_sucess:
-  - echo "Test Success"
+# 이건 테스트 성공한거고 그냥 둬도 문제는 없지만, 배포환경에선 필요없어서 주석처리하겠음
+# after_sucess:
+#   - echo "Test Success"
+
+# 배포환경 설정
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-app"
+  env: "DockerReactApp-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-840186604776"
+  bucket_path: "docker-react-app"
+  on:
+    branch: master
+access_key_id: $AWS_ACCESS_KEY
+secret_access_key: $AWS_SECRET_ACCESS_KEY
