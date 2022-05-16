@@ -10,8 +10,8 @@ RUN npm install
 COPY ./ ./
 
 # 생성된 파일과 폴더들은 /usr/src/app/build 컨테이너 경로로 들어감.
-CMD ["npm", "run", "build"] 
-
+# CMD ["npm", "run", "build"] 
+RUN npm run build
 
 # Run Stage
 # 포트 매핑 해줘야함 (nginx는 기본 포트 80)

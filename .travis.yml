@@ -11,7 +11,7 @@ services:
 # 스크립트를 실행할 수 있는 환경을 구성.
 # script을 실행하기 전에 해야될 것임. (script 실행하려면 도커 이미지를 생성해야함!)
 before_install:
-  - echo "start Creating an image with dockerfile"
+  - echo "start creating an image with dockerfile"
   - docker build -t bakumando/docker-react-app -f Dockerfile.dev .
 
 # 실행할 스크립트 (테스트 실행)
@@ -27,12 +27,13 @@ script:
 
 # 배포환경 설정 (자세한 건 pdf 자료 참고)
 deploy:
+  edge: true
   provider: elasticbeanstalk
-  region: "ap-northeast-2"
-  app: "docker-react-app"
-  env: "DockerReactApp-env"
-  bucket_name: "elasticbeanstalk-ap-northeast-2-840186604776"
-  bucket_path: "docker-react-app"
+  region: ap-northeast-2
+  app: docker-react-app
+  env: DockerReactApp-env
+  bucket_name: elasticbeanstalk-ap-northeast-2-840186604776
+  bucket_path: docker-react-app
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
