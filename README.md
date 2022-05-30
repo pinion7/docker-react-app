@@ -1,4 +1,4 @@
-# docker-react-app 구축 및 실행해보기
+# docker-react-app 구축 및 실행해보기 (docker 블로깅: https://velog.io/@pinion7)
 
 ## A. docker를 활용하여 리액트 앱 띄우기
 
